@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { IThought } from '../App';
 import { generateId, getNewExpirationTime } from '../functions/utilities';
+import { IAddThoughtFormProps } from '../interfaces/IAddThoughtFormProps';
 
-interface IAddThoughtFormProps {
-  addThought: (thougth: IThought) => void
-}
+
 
 export function AddThoughtForm(props: IAddThoughtFormProps) {
-  const [text, setText] = useState('')
+  const { addThought } = props
+  const [text, setText] = useState<string>('')
 
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event
@@ -24,7 +23,7 @@ export function AddThoughtForm(props: IAddThoughtFormProps) {
     };
 
     if (text.length > 0) {
-      props.addThought(thought)
+      addThought(thought)
     }
 
     setText('')

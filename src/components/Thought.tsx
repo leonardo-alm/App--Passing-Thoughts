@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
-import { IThought } from '../App';
+import { useEffect } from 'react';
+import { IThoughtProps } from '../interfaces/IThoughtProps';
 
-interface IThoughtProps {
-    removeThought: (thoughtIdToRemove: number) => void;
-    thought: IThought
-}
 
 export function Thought(props: IThoughtProps) {
     const { thought, removeThought } = props;

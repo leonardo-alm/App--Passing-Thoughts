@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { useState } from 'react';
 import { AddThoughtForm } from './components/AddThoughtForm';
 import { Thought } from './components/Thought';
 import { generateId, getNewExpirationTime } from './functions/utilities';
-
-export interface IThought {
-  id: number;
-  text: string;
-  expiresAt: number;
-}
+import { IThought } from './interfaces/IThought';
 
 export function App() {
   const [thoughts, setThoughts] = useState<IThought[]>([
@@ -24,7 +18,7 @@ export function App() {
     },
   ]);
 
-  const addThought = (thought : IThought) => {
+  const addThought = (thought: IThought) => {
     setThoughts((prev) => {
       return [thought, ...prev]
     })
@@ -52,4 +46,3 @@ export function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
