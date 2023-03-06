@@ -1,5 +1,5 @@
 export function getNewExpirationTime() : number {
-    return Date.now() + 15 * 1000;
+    return Date.now() + 5 * 1000;
 }
 
 let nextId = 0;

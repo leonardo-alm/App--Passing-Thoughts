@@ -1,16 +1,16 @@
 # Passing Thoughts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple React.js application where you can submit a 'thought' that will disappear after 5 seconds or after you click on 'x'
 
-## Description
+## Demo
 
-This is a simple React.js application where you can submit a 'thought' that will disappear within 15 seconds or after you click 'x'
+To see the demo in higher quality click on the gif below.
 
-### `npm start`
+![Passing Thoughts Demo](demo/animacao.gif)
 
-Runs the app in the development mode.\
+### Run
+
+Run 'npm start' to run the app
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 

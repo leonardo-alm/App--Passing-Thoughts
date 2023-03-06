@@ -13,7 +13,7 @@ export function App() {
     },
     {
       id: generateId(),
-      text: "They'll be removed after 15 seconds.",
+      text: "They'll be removed after 5 seconds.",
       expiresAt: getNewExpirationTime(),
     },
   ]);
