@@ -10,7 +10,8 @@ To see the demo in higher quality click on the gif below.
 
 ## Run
 
-Run 'npm start' to run the app
+Run 'npm start' to run the app.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
