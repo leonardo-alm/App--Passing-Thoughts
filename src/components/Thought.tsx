@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { IThoughtProps } from '../interfaces/IThoughtProps';
 
-
 export function Thought(props: IThoughtProps) {
     const { thought, removeThought } = props;
+
+    if (!thought.text.trim()) {
+        throw Error("No thoughts?")
+    }
 
     useEffect(() => {
         const timeRemaining = thought.expiresAt - Date.now();

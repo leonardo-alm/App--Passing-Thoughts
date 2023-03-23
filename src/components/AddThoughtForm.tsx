@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { generateId, getNewExpirationTime } from '../functions/utilities';
 import { IAddThoughtFormProps } from '../interfaces/IAddThoughtFormProps';
 
-
-
 export function AddThoughtForm(props: IAddThoughtFormProps) {
   const { addThought } = props
   const [text, setText] = useState<string>('')
@@ -21,11 +19,8 @@ export function AddThoughtForm(props: IAddThoughtFormProps) {
       text: text,
       expiresAt: getNewExpirationTime(),
     };
-
-    if (text.length > 0) {
-      addThought(thought)
-    }
-
+    
+    addThought(thought)
     setText('')
   }
 

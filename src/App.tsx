@@ -3,6 +3,9 @@ import { AddThoughtForm } from './components/AddThoughtForm';
 import { Thought } from './components/Thought';
 import { generateId, getNewExpirationTime } from './functions/utilities';
 import { IThought } from './interfaces/IThought';
+import { ErrorBoundary } from "react-error-boundary";
+import { logError } from './functions/error-logging-service';
+import { IBlankThoughtProps } from './interfaces/IBlankThoughtProps';
 
 export function App() {
   const [thoughts, setThoughts] = useState<IThought[]>([
@@ -25,9 +28,20 @@ export function App() {
   }
 
   const removeThought = (thoughtIdToRemove: number) => {
-    setThoughts((prev) => prev.filter((thought) => thought.id != thoughtIdToRemove)
+    setThoughts((prev) => prev.filter((thought) => thought.id !== thoughtIdToRemove)
     )
   }
+
+  const BlankThought = ({ error, resetErrorBoundary, thought }: IBlankThoughtProps) => {
+    thought.text = error.message;
+    const removeAndReset = () => {
+      removeThought(thought.id)
+      resetErrorBoundary()
+    }
+    return (
+      <Thought removeThought={removeAndReset} key={thought.id} thought={thought} />
+    );
+  };
 
   return (
     <div className="App">
@@ -38,7 +52,15 @@ export function App() {
         <AddThoughtForm addThought={addThought} />
         <ul className="thoughts">
           {thoughts.map((thought) => (
-            <Thought key={thought.id} thought={thought} removeThought={removeThought} />
+            <ErrorBoundary onError={logError} FallbackComponent={(props) => (
+              <BlankThought {...props} thought={thought} />
+            )}>
+              <Thought
+                removeThought={removeThought}
+                key={thought.id}
+                thought={thought}
+              />
+            </ErrorBoundary>
           ))}
         </ul>
       </main>
